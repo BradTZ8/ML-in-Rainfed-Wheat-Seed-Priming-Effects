@@ -23,11 +23,6 @@ The following parameters were measured to evaluate wheat performance:
 * **Biological Yield:** Total above-ground biomass harvested and dried for yield estimation (Lamlom et al., 2023).
 * **Protein Percentage and Yield:** Grain protein measured by Kjeldahl method; protein yield = protein % × seed yield (Yan et al., 2022).
 * **Harvest Index (HI):** Ratio of economic yield (grain) to total biomass, expressed as a percentage:
-
-[
-HI = \frac{\text{Grain Yield}}{\text{Total Above-Ground Biomass}} \times 100
-]
-
 ---
 
 ## Dataset
@@ -53,14 +48,7 @@ HI = \frac{\text{Grain Yield}}{\text{Total Above-Ground Biomass}} \times 100
   3. Model training using 50% train / 50% test split
   4. 5-fold cross-validation applied for all models
   5. Performance evaluation using **Root Mean Square Percentage Error (RMSPE)** and **R²**
-* **RMSPE Formula:**
-
-[
-RMSPE = \sqrt{\frac{1}{N} \sum_{i=1}^{N} \left( \frac{x_i - \hat{x}_i}{x_i} \right)^2 } \times 100
-]
-
-where (x_i) is the actual value, (\hat{x}_i) is the predicted value, and (N) is the number of observations.
-
+  6. 
 * **Software:** Python with `pandas`, `numpy`, `matplotlib`, `seaborn`, `scikit-learn`, `xgboost`, `catboost`, `scipy`.
 
 ---
