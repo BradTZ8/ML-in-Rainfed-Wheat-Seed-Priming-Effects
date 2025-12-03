@@ -6,52 +6,70 @@
 
 ## Project Overview
 
-This project uses **machine learning (ML)** to analyze the effects of **seed priming treatments** on the performance of **rainfed wheat**. Rainfed wheat grows under **limited water conditions**, and seed priming can improve **germination, growth, and yield**. The goal of this project is to predict wheat yield and identify which factors most influence crop performance using ML techniques.
+This project applies **machine learning (ML)** to study the effects of **seed priming treatments** on **rainfed wheat** performance. Seed priming is a pre-sowing treatment that improves **germination, growth, and yield** under water-limited conditions. The aim is to predict wheat yield and growth traits and identify **key factors influencing crop performance**.
+
+---
+
+## Crop Monitoring and Growth Parameters
+
+The following parameters were measured to evaluate wheat performance:
+
+* **Spike Emergence:** Days from sowing to 50% spike appearance from the flag leaf sheath (Liu et al., 2022).
+* **Plant Height:** Measured at physiological maturity from soil surface to spike tip, averaged over 10 plants per plot (Zhang et al., 2023).
+* **Spike Density per m²:** Number of spikes counted within 1 m² at peak heading (Wen et al., 2022).
+* **Number of Seeds per Spike:** Average seeds counted per randomly selected mature spikes (Chu et al., 2023).
+* **Thousand-Seed Weight (TSW):** Weight of 1,000 cleaned, dried seeds in grams (Milivojević et al., 2022).
+* **Seed Yield:** Harvested, cleaned, and dried grains extrapolated to kg/ha (Anbes & Asredie, 2025).
+* **Biological Yield:** Total above-ground biomass harvested and dried for yield estimation (Lamlom et al., 2023).
+* **Protein Percentage and Yield:** Grain protein measured by Kjeldahl method; protein yield = protein % × seed yield (Yan et al., 2022).
+* **Harvest Index (HI):** Ratio of economic yield (grain) to total biomass, expressed as a percentage:
+
+[
+HI = \frac{\text{Grain Yield}}{\text{Total Above-Ground Biomass}} \times 100
+]
 
 ---
 
 ## Dataset
 
 * Source: [Kaggle Notebook – Rainfed Wheat](https://www.kaggle.com/code/bardiatalebian/ml-in-rainfed-wheat-seed-priming-effects)
-* Contains experimental data on wheat under different **seed priming treatments**.
-* **Features may include:**
-
-  * Seed priming method (hydropriming, chemical priming, nutrient priming, etc.)
-  * Environmental conditions (rainfall, temperature, soil moisture)
-  * Soil properties (texture, nutrients)
-  * Plant growth traits (germination rate, plant height, biomass)
-* **Target Variables:**
-
-  * Wheat yield
-  * Yield components (grain weight, grain number, etc.)
+* Features include seed priming type, environmental factors (rainfall, temperature, soil moisture), soil properties, and plant growth traits.
+* Target variables: Wheat yield, yield components, and protein yield.
 
 ---
 
-## Technical Details
+## Data Modeling
 
-* **Programming Language:** Python
-* **Key Libraries:**
+* **Algorithms Used:**
 
-  * `pandas`, `numpy` – data manipulation
-  * `matplotlib`, `seaborn` – visualization
-  * `scikit-learn` – regression models and preprocessing
-  * `xgboost` – gradient boosting model
-  * `scipy` – statistical analysis
-* **Machine Learning Workflow:**
+  * Linear models: Linear Regression (LR), Ridge, Lasso, ElasticNet
+  * Tree-based ensembles: Random Forest (RF)
+  * Boosting: CatBoost (CB), Extreme Gradient Boosting (XGB)
+  * Support Vector Regression (SVR)
+* **Workflow:**
 
-  1. **Data Preprocessing:** Cleaning, missing value handling, categorical encoding, scaling.
-  2. **Exploratory Data Analysis (EDA):** Visualizing the relationship between seed priming and wheat traits.
-  3. **Model Training:** Regression models to predict yield (Linear Regression, Random Forest, XGBoost).
-  4. **Model Evaluation:** Metrics like RMSE, MAE, and R² to assess performance.
-  5. **Feature Importance Analysis:** Identify key factors affecting yield and growth.
+  1. Data preprocessing: Missing values, encoding, scaling
+  2. Exploratory Data Analysis (EDA)
+  3. Model training using 50% train / 50% test split
+  4. 5-fold cross-validation applied for all models
+  5. Performance evaluation using **Root Mean Square Percentage Error (RMSPE)** and **R²**
+* **RMSPE Formula:**
+
+[
+RMSPE = \sqrt{\frac{1}{N} \sum_{i=1}^{N} \left( \frac{x_i - \hat{x}_i}{x_i} \right)^2 } \times 100
+]
+
+where (x_i) is the actual value, (\hat{x}_i) is the predicted value, and (N) is the number of observations.
+
+* **Software:** Python with `pandas`, `numpy`, `matplotlib`, `seaborn`, `scikit-learn`, `xgboost`, `catboost`, `scipy`.
 
 ---
 
 ## Results
 
-* ML models successfully predict **yield and agronomic traits** under rainfed conditions.
-* Feature importance analysis highlights **critical factors** that influence wheat performance.
-* Insights can help optimize **seed priming strategies** for farmers in water-limited environments.
+* ML models successfully predicted **yield and agronomic traits** under rainfed conditions.
+* Feature importance analysis identified **key factors influencing crop performance**, helping optimize seed priming strategies.
+* RMSPE allowed **relative error assessment**, making model performance easier to interpret than standard RMSE.
 
 ---
 
@@ -73,8 +91,10 @@ This project uses **machine learning (ML)** to analyze the effects of **seed pri
    jupyter notebook ML_in_Rainfed_Wheat.ipynb
    ```
 
+---
+
 ## References
 
-* Kaggle Notebook: [ML in Rainfed Wheat: Seed Priming Effects](https://www.kaggle.com/code/bardiatalebian/ml-in-rainfed-wheat-seed-priming-effects)
-* Seed Priming Techniques in Wheat: [ScienceDirect](https://www.sciencedirect.com/topics/agricultural-and-biological-sciences/seed-priming)
+* Kaggle Notebook: [ML in Rainfed Wheat](https://www.kaggle.com/code/bardiatalebian/ml-in-rainfed-wheat-seed-priming-effects)
+
 
